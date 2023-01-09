@@ -7,7 +7,7 @@ export default [
                     "rooms":20,
                     "pricing":1800,
                     "rating":4.5,
-                    "image":"https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8dmVudWVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    "image":"https://image.wedmegood.com/resized/540X/uploads/member/1074332/1583907014_G12.jpg?crop=92,64,1056,594"
                 },
                 {
                     "id":2,
@@ -34,7 +34,7 @@ export default [
                     "rooms":20,
                     "pricing":1800,
                     "rating":4.5,
-                    "image":"https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8dmVudWVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    "image":"https://brigadehospitality.com/wp-content/uploads/2021/09/wedding-venues-in-south-bangalore.jpg"
                 },
                 {
                     "id":5,
@@ -52,7 +52,7 @@ export default [
                     "rooms":20,
                     "pricing":1800,
                     "rating":4.5,
-                    "image":"https://plus.unsplash.com/premium_photo-1664530452361-9f86e38784b8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8dmVudWVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                    "image":"https://digiartphotography.com/wp-content/uploads/taj-falaknuma-wedding-1024x576.jpg"
                 },
                 {
                     "id":7,
@@ -61,7 +61,7 @@ export default [
                     "rooms":20,
                     "pricing":1800,
                     "rating":4.5,
-                    "image":"https://images.unsplash.com/photo-1620735692151-26a7e0748429?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTd8fHZlbnVlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                    "image":"https://blog.venuelook.com/wp-content/uploads/2019/05/best-5-star-wedding-hotels-in-hyderabad-for-all-types-of-budgets-650x330.jpg"
                 },
                 {
                     "id":8,
@@ -70,7 +70,7 @@ export default [
                     "rooms":20,
                     "pricing":1800,
                     "rating":4.5,
-                    "image":"https://images.unsplash.com/photo-1577058071107-96a5a1dbe120?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHZlbnVlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                    "image":"https://cdn0.weddingwire.com/vendor/718580/3_2/960/jpg/dsc09800_51_2085817-164731111817691.webp"
                 },
                 {
                     "id":9,
@@ -79,7 +79,7 @@ export default [
                     "rooms":20,
                     "pricing":1800,
                     "rating":4.5,
-                    "image":"https://images.unsplash.com/photo-1510076857177-7470076d4098?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fHZlbnVlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                    "image":"https://cdn0.weddingwire.in/vendor/1099/3_2/1280/jpg/images-4-20121203-1245820643_15_71099.jpeg"
                 },
                 {
                     "id":10,
@@ -88,7 +88,7 @@ export default [
                     "rooms":20,
                     "pricing":1800,
                     "rating":4.5,
-                    "image":"https://images.unsplash.com/photo-1526045004414-3e7ed02f9ca1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDN8fHZlbnVlc3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                    "image":"https://cdn0.weddingwire.in/vendor/8246/3_2/960/jpeg/d944a4a8-569c-4c64-a66d-57965faf6fe4_15_388246-164066465383466.jpeg"
                 },
                 {
                     "id":11,
