@@ -22,11 +22,11 @@
             <v-icon class="icon" icon="mdi-account-circle"></v-icon>
             <div class="col">
                 <label>Name</label>
-                <input name="username" v-model="username" type="text" placeholder="enter name" />
+                <input name="username" required v-model="username" type="text" placeholder="enter name" />
             </div>
             <div class="col">
                 <label>Password</label>
-                <input name="password" v-model="password" type="password" placeholder="enter password" />
+                <input name="password" required v-model="password" type="password" placeholder="enter password" />
             </div>
             <v-btn color="black"  @click="handleSubmit" type="submit">submit</v-btn>
         </form>

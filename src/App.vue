@@ -2,12 +2,11 @@
   <v-app>
     <v-main>
       <TheNavbar/>
-        <router-view></router-view>
-        <!-- <router-view v-slot="{ Component }">
+        <router-view v-slot="{ Component }">
           <keep-alive>
             <component :is="Component" />
           </keep-alive>
-        </router-view> -->
+        </router-view>
     </v-main>
   </v-app>
 </template>

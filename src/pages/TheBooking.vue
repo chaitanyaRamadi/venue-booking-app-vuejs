@@ -5,32 +5,42 @@
     <form>
             <div class="col">
                 <label>Name</label>
-                <input  name="username" ref="name"  v-model="name.val" type="text" placeholder="enter name"  required/>
-                <p v-if="!name.isValid" :class="{'warn-msg':true}">Name must be valid!</p>
+                <input @blur="v$.name.$touch"  name="username" ref="name"  v-model="name" type="text" placeholder="Enter name"/>
+                <template v-if="v$.name.$error" >
+                    <p  :class="{'warn-msg':true}">Name is invalid</p>
+                </template>
             </div>
             <div class="col">
                 <label>Date</label>
-                <input  name="date" ref="date" v-model="date.val" @blur="validateDate" @change="validateDate"   type="date"/>
-                <p v-if="!date.isValid" :class="{'warn-msg':true}">Date must be valid!</p>
+                <input @blur="v$.date.$touch"  name="date" v-model="date"  type="date"/>
+                <template v-if="v$.date.$error" >
+                    <p :class="{'warn-msg':true}">date is invalid</p>
+                </template>
             </div>
             <div class="col">
                 <label>Start Time</label>
-                <input name="start-time" v-model="startTime.val" ref="stime" type="time" @change="validateTime"  @blur="afterLoseFocus('startTime',$event)"/>
-                <p v-if="!startTime.isValid" :class="{'warn-msg':true}">Start Time must be valid!</p>
+                <input @blur="v$.startTime.$touch" name="start-time" v-model="startTime" ref="stime" type="time"/>
+                <template v-if="v$.startTime.$error" >
+                    <p :class="{'warn-msg':true}">venue opens at 9:00 AM</p>
+                </template>
             </div>
             <div class="col">
                 <label>End Time</label>
-                <input name="end-time" v-model="endTime.val" ref="etime" type="time" @blur="afterLoseFocus('endTime',$event)"/>
-                <p v-if="!endTime.isValid" :class="{'warn-msg':true}">End Time must be valid!</p>
+                <input @blur="v$.endTime.$touch" name="end-time" v-model="endTime" ref="etime" type="time" />
+                <template v-if="v$.endTime.$error">
+                    <p :class="{'warn-msg':true}">venue closes at 11:00 PM</p>
+                </template>
             </div>
             <div class="col">
                 <label>Member Count</label>
-                <input name="members" v-model="memberCount.val" ref="count" type="number" @blur="afterLoseFocus('memberCount',$event)"/>
-                <p v-if="!memberCount.isValid" :class="{'warn-msg':true}">Member Count must be valid!</p>
+                <input @blur="v$.memberCount.$touch" name="members" v-model.number="memberCount" ref="count" type="number" />
+                <template v-if="v$.memberCount.$error" >
+                    <p :class="{'warn-msg':true}">member count should atleast be 10!</p>
+                </template>
             </div>
             <div class="double-btn">
                 <v-btn color="primary" @click.prevent="confirmDetails" type="submit">confirm</v-btn>
-                <v-btn color="red" @click.prevent="cancelAndBack" type="submit">cancel</v-btn>
+                <v-btn color="red" @click.prevent="cancelAndBack"  type="submit">cancel</v-btn>
             </div>
         </form>
         <v-dialog v-model="dialog">
@@ -46,34 +56,48 @@
 </template>
 
 <script>
+import { useVuelidate } from '@vuelidate/core'
+import { required,minValue,minLength } from '@vuelidate/validators'
+import { isValidDate,isValidStartTime,isValidEndTime } from '../validators.js'
+
+
 
 export default {
+    setup() { return { v$: useVuelidate() } },
     data(){
         return {
+            name: "",
+            date: null,
+            startTime: null,
+            endTime: null,
+            memberCount: null,
+            dialog:false,
             currentVenue:{},
-            name:{
-                val:null,
-                isValid:true
+            msg:''
+        }
+    },
+    validations(){
+        return {
+            name: {
+                required,
+                minLength:minLength(5)
             },
             date: {
-                val: null,
-                isValid: true
+                required,
+                isValidDate
             },
             startTime: {
-                val: null,
-                isValid: true
+                required,
+                isValidStartTime
             },
             endTime: {
-                val: null,
-                isValid: true
+                required,
+                isValidEndTime
             },
-            memberCount: {
-                val: 0,
-                isValid: true
+            memberCount: { 
+                required,
+                minValue:minValue(10) 
             },
-            dialog:false,
-            msg:'',
-            dateStyle:''
         }
     },
     computed:{
@@ -85,31 +109,12 @@ export default {
         this.currentVenue = this.venueData.find((item) => item.id == this.$route.params.id)
     },
     methods:{
-        validateDate(event){
-            if (new Date(event.target.value).getDate() <= new Date().getDate() || this.$refs.date.value == '' )
-                this.date.isValid = false
-            else{
-                this.date.isValid = true
-            }
+        cancelAndBack(){
+            this.$router.push('/venues')
         },
-        validateTime(event){
-            let time = Date(event.target.value)
-            console.log(time);
-        },
-        afterLoseFocus(input,event){
-            if (event.target.value === '' || event.target.value === null )
-                this[input].isValid = false
-            else
-                this[input].isValid = true
-        },
-        confirmDetails(){
-            console.log(this.$refs.name.value + ' refs');
-            if (!this.$refs.name.value || !this.$refs.date.value || !this.$refs.stime.value || !this.$refs.etime.value || !this.$refs.count.value){
-                this.msg = 'one or more of your inputs are invalid!'
-                // this.dialog=true
-
-            }
-            else{
+        async confirmDetails(){
+            const isFormCorrect = await this.v$.$validate()
+            if (isFormCorrect){
                 let bookingDetails = {}
                 bookingDetails = {
                     name: this.name,
@@ -123,12 +128,14 @@ export default {
                     venueDetails:this.currentVenue
                 })
                 this.$router.push('/booking-success')
+            } 
+            else{
+                this.dialog = true
+                this.msg = "some of the fields are invalid"
             }
-        },
-        cancelAndBack(){
-            this.$router.push('/venues')
+            }
         }
-    }
+    
 }
 </script>
 
@@ -147,6 +154,7 @@ export default {
     justify-content: center;
     margin: 3rem auto;
 }
+
 form {
     display: flex;
     flex-direction: column;
