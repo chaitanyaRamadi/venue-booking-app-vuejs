@@ -1,46 +1,46 @@
 <template>
     <div class="heading text-h5">
-        <the-heading><h2>Booking</h2></the-heading>
+        <the-heading><h2>{{ $t('bookingPage.booking') }}</h2></the-heading>
     </div>
     <form>
             <div class="col">
-                <label>Name</label>
-                <input @blur="v$.name.$touch"  name="username" ref="name"  v-model="name" type="text" placeholder="Enter name"/>
+                <label>{{ $t('loginPage.name') }}</label>
+                <input @blur="v$.name.$touch"  name="username" ref="name"  v-model="name" type="text" :placeholder="$t('loginPage.namePlaceholder')"/>
                 <template v-if="v$.name.$error" >
                     <p  :class="{'warn-msg':true}">Name is invalid</p>
                 </template>
             </div>
             <div class="col">
-                <label>Date</label>
+                <label>{{ $t('bookingPage.date') }}</label>
                 <input @blur="v$.date.$touch"  name="date" v-model="date"  type="date"/>
                 <template v-if="v$.date.$error" >
                     <p :class="{'warn-msg':true}">date is invalid</p>
                 </template>
             </div>
             <div class="col">
-                <label>Start Time</label>
+                <label>{{ $t('bookingPage.startTime') }}</label>
                 <input @blur="v$.startTime.$touch" name="start-time" v-model="startTime" ref="stime" type="time"/>
                 <template v-if="v$.startTime.$error" >
                     <p :class="{'warn-msg':true}">venue opens at 9:00 AM</p>
                 </template>
             </div>
             <div class="col">
-                <label>End Time</label>
+                <label>{{ $t('bookingPage.endTime') }}</label>
                 <input @blur="v$.endTime.$touch" name="end-time" v-model="endTime" ref="etime" type="time" />
                 <template v-if="v$.endTime.$error">
                     <p :class="{'warn-msg':true}">venue closes at 11:00 PM</p>
                 </template>
             </div>
             <div class="col">
-                <label>Member Count</label>
+                <label>{{ $t('bookingPage.memberCount') }}</label>
                 <input @blur="v$.memberCount.$touch" name="members" v-model.number="memberCount" ref="count" type="number" />
                 <template v-if="v$.memberCount.$error" >
                     <p :class="{'warn-msg':true}">member count should atleast be 10!</p>
                 </template>
             </div>
             <div class="double-btn">
-                <v-btn color="primary" @click.prevent="confirmDetails" type="submit">confirm</v-btn>
-                <v-btn color="red" @click.prevent="cancelAndBack"  type="submit">cancel</v-btn>
+                <v-btn color="primary" @click.prevent="confirmDetails" type="submit">{{ $t('bookingPage.confirm') }}</v-btn>
+                <v-btn color="red" @click.prevent="cancelAndBack"  type="submit">{{ $t('bookingPage.cancel') }}</v-btn>
             </div>
         </form>
         <v-dialog v-model="dialog">

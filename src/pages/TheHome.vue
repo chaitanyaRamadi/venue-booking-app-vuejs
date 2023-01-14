@@ -1,8 +1,8 @@
 <template>
         <div class="hero">
             <div class="quote">
-                <h1>Now Venue Booking will be a Breeze!</h1>
-                <v-btn class="btn" @click="this.$router.push('/login')" color="black">Book Now</v-btn>
+                <h1>{{ $t('homePage.caption') }}</h1>
+                <v-btn class="btn" @click="this.$router.push('/login')" color="black">{{ $t('venuesPage.bookNow') }}</v-btn>
             </div>
             <div class="picture">
                 <div class="pic1 pic">

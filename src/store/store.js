@@ -5,6 +5,7 @@ export default createStore({
     state(){
         return {
             venues:data,
+            locale:'en',
             selectedCity:'Bangalore',
             isLoggedIn:false,
             user:{},
@@ -15,15 +16,14 @@ export default createStore({
         getVenues(state){
             return state.venues
         },
-        // getVenue:(state)=>(venueId)=>{
-        //     return state.venues.find((item) => item.id === venueId)
-           
-        // },
         getLog(state){
             return state.isLoggedIn
         },
         getSelectedCity(state){
             return state.selectedCity
+        },
+        getLocale(state){
+            return state.locale
         },
         getUsers(state){
             return state.user
@@ -35,6 +35,9 @@ export default createStore({
     mutations:{
         setSelectedCity(state,payload){
             state.selectedCity = payload
+        },
+        setLocale(state,payload){
+            state.locale = payload
         },
         setLog(state,payload){
             state.isLoggedIn = payload
@@ -55,6 +58,9 @@ export default createStore({
     actions:{
         setSelectedCity(context,payload){
             context.commit('setSelectedCity',payload)
+        },
+        setLocale(context,payload){
+            context.commit('setLocale',payload)
         },
         setLog(context,payload){
             context.commit('setLog',payload)

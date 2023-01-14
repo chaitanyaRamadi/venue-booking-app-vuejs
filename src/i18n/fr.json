@@ -1,0 +1,34 @@
+{
+      "venuesPage":{
+        "selectACity": "Sélectionnez une ville",
+        "bookNow": "Reserve maintenant",
+        "quote":"1000 miles d'émerveillement"
+      },
+      "homePage":{
+        "caption":"Maintenant, la réservation de lieu sera un jeu d'enfant !",
+        "brand":"VENIN"
+      },
+      "loginPage":{
+        "name":"Nom",
+        "namePlaceholder":"entrez le nom",
+        "passwordPlaceholder":"Entrer le mot de passe",
+        "password":"Mot de passe",
+        "login":"connexion",
+        "logout":"Se déconnecter",
+        "submit":"nous faire parvenir"
+      },
+      "bookingPage":{
+        "booking":"réservation",
+        "date":"Date",
+        "startTime":"Startzeit",
+        "endTime":"Endzeit",
+        "memberCount":"Mitgliederanzahl",
+        "confirm":"BESTÄTIGEN",
+        "cancel":"ABBRECHEN"
+      },
+      "bookingSuccessPage":{
+        "back":"retour",
+        "congrats":"Félicitations",
+        "continuedMsg":"Votre réservation a été confirmée pour"
+      }
+    }

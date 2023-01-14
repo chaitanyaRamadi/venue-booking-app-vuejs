@@ -14,21 +14,21 @@
     </div>
     <div class="center">
         <the-heading>
-            <h2 class="lg--text">Login</h2>
+            <h2 class="lg--text">{{ $t('loginPage.login') }}</h2>
         </the-heading>
     </div>
     <div class="hello">
         <form @submit.prevent="handleSubmit">
             <v-icon class="icon" icon="mdi-account-circle"></v-icon>
             <div class="col">
-                <label>Name</label>
-                <input name="username" required v-model="username" type="text" placeholder="enter name" />
+                <label>{{ $t('loginPage.name') }}</label>
+                <input name="username" required v-model="username" type="text" :placeholder="$t('loginPage.namePlaceholder')" />
             </div>
             <div class="col">
-                <label>Password</label>
-                <input name="password" required v-model="password" type="password" placeholder="enter password" />
+                <label>{{ $t('loginPage.password') }}</label>
+                <input name="password" required v-model="password" type="password" :placeholder="$t('loginPage.passwordPlaceholder')" />
             </div>
-            <v-btn color="black"  @click="handleSubmit" type="submit">submit</v-btn>
+            <v-btn color="black"  @click="handleSubmit" type="submit">{{ $t('loginPage.submit') }}</v-btn>
         </form>
     </div>
 </template>

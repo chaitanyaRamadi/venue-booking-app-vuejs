@@ -1,0 +1,34 @@
+{
+      "venuesPage":{
+       "selectACity": "Select a City",
+        "bookNow": "BOOK NOW",
+        "quote":"1000 miles of wonder"
+      },
+      "homePage":{
+        "caption":"Now Venue Booking will be a Breeze!",
+       "brand":"VENEW"
+      },
+      "loginPage":{
+        "name":"Name",
+        "namePlaceholder":"Enter Name",
+        "passwordPlaceholder":"Enter Password",
+        "password":"Password",
+        "login":"Login",
+        "logout":"Logout",
+        "submit":"Submit"
+      },
+      "bookingPage":{
+        "booking":"Booking",
+        "date":"Date",
+        "startTime":"Start Time",
+        "endTime":"End Time",
+        "memberCount":"Member Count",
+        "confirm":"CONFIRM",
+        "cancel":"CANCEL"
+      },
+      "bookingSuccessPage":{
+        "back":"BACK",
+        "congrats":"Congratulations",
+        "continuedMsg":"Your booking has been confirmed for"
+      }
+    }

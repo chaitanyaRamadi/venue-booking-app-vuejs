@@ -1,8 +1,8 @@
 <template>
     <div class="container">
         <section class="head">
-            <v-btn @click="this.$router.push('/venues')">Back</v-btn>
-            <h2>Congratulations <span class="user-name ">{{ bookingDetails.userDetails.name.val }}</span>! Your booking has been confirmed for <span class="venue-name">{{ bookingDetails.venueDetails.name }}</span>.</h2>
+            <v-btn @click="this.$router.push('/venues')">{{ $t('bookingSuccessPage.back') }}</v-btn>
+            <h2>{{ $t('bookingSuccessPage.congrats') }} <span class="user-name">{{ bookingDetails.userDetails.name }}</span>! {{ $t('bookingSuccessPage.continuedMsg') }} <span class="venue-name">{{ bookingDetails.venueDetails.name }}</span>.</h2>
         </section>
         <div class="xcard">
         </div>
@@ -17,7 +17,7 @@
                 </div>
             
                 <v-card-subtitle>
-                    1,000 miles of wonder
+                    {{ $t('venuesPage.quote') }}
                 </v-card-subtitle>
             
                 <v-card-actions>
@@ -34,6 +34,7 @@
 export default {
     computed:{
         bookingDetails(){
+            console.log(this.$store.getters.getUserAndVenue.userDetails.name+' name');
             return this.$store.getters.getUserAndVenue
         }
     }
@@ -70,7 +71,7 @@ h2{
     font-family: 'IBM Plex Mono', monospace;
     font-size:3rem;
     color:#5b96fd;
-    text-shadow: 2px 0px 10px #5e96f8 ;
+    /* text-shadow: 2px 0px 10px #5e96f8 ; */
 }
 .main{
    margin: 5rem;

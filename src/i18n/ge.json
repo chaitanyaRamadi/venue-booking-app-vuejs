@@ -1,0 +1,34 @@
+{
+      "venuesPage":{
+        "selectACity": "Wählen Sie eine Stadt aus",
+        "bookNow": "buchen Sie jetzt",
+        "quote":"1000 Meilen Wunder"
+      },
+      "homePage":{
+        "caption":"Jetzt wird die Buchung von Veranstaltungsorten zum Kinderspiel!",
+        "brand":"VENE"
+      },
+      "loginPage":{
+        "name":"Name",
+        "namePlaceholder":"Name eingeben",
+        "passwordPlaceholder":"Passwort eingeben",
+        "password":"Passwort",
+        "login":"Anmeldung",
+        "logout":"Ausloggen",
+        "submit":"einreichen"
+      },
+      "bookingPage":{
+        "booking":"Buchung",
+        "date":"Datum",
+        "startTime":"Startzeit",
+        "endTime":"Endzeit",
+        "memberCount":"Mitgliederzahl",
+        "confirm":"bestätigen",
+        "cancel":"Abbrechen"
+      },
+      "bookingSuccessPage":{
+        "back":"zurück",
+        "congrats":"Herzlichen Glückwunsch",
+        "continuedMsg":"Ihre Buchung wurde bestätigt für"
+      }
+    }

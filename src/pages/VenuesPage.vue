@@ -1,5 +1,11 @@
 <template>
-<the-dropdown></the-dropdown>
+    <div class="center">
+        <the-heading>
+            <h2 class="text-h4">{{ $t("venuesPage.selectACity") }}</h2>
+        </the-heading>
+    </div>
+    <the-dropdown :locale="false" :list="states" @dropdown-event="handleStatesChange"></the-dropdown>
+    <!-- <the-dropdown :list="languages" @dropdown-event="handleLocale"></the-dropdown> -->
 <div class="items">
     <div  v-for="venue in city" :key="venue.name">
             <v-card   class="mx-auto" max-width="400" width="500">
@@ -13,12 +19,12 @@
                 </div>
             
                 <v-card-subtitle>
-                    1,000 miles of wonder
+                    {{ $t('venuesPage.quote') }}
                 </v-card-subtitle>
             
                 <v-card-actions>
                     <v-btn @click="bookNow(venue.id)" color="orange-lighten-2" variant="text">
-                        Book Now
+                        {{ $t('venuesPage.bookNow') }}
                     </v-btn>
             
                     <v-spacer></v-spacer>
@@ -40,7 +46,19 @@ export default {
     },
     data(){
         return {
-            city: []
+            city: [],
+            states: [
+                { key: 'Bangalore', abbr: 'BG' },
+                { key: 'Delhi', abbr: 'DE' },
+                { key: 'Kolkata', abbr: 'KL' },
+                { key: 'Chennai', abbr: 'CH' },
+                { key: 'Hyderabad', abbr: 'HY' },
+            ],
+            languages: [
+                { key: 'english', abbr: 'en' },
+                { key: 'german', abbr: 'ge' },
+                { key: 'french', abbr: 'fr' },
+            ],
         }
     },
     computed: {
@@ -52,6 +70,13 @@ export default {
         }   
     },
     methods:{
+        handleLocale(event){
+            this.$i18n.locale = event.target.value.slice(0,2);
+            this.$store.dispatch('setLocale', event.target.value)
+        },
+        handleStatesChange(event){
+            this.$store.dispatch('setSelectedCity', event.target.value)
+        },
         bookNow(venueId){
             this.$router.push('/venues/'+venueId)
         },
@@ -67,11 +92,19 @@ export default {
     created(){
         this.filterVenuesByCity()
 
+    },
+    mounted(){
+        console.log(this.$i18n.locale);
     }
 }
 </script>
 
 <style>
+.center{
+    display: flex;
+    justify-content: center;
+    margin: 2rem auto;
+}
 .items{
     margin-top: 7rem;
     width: 100vw;
