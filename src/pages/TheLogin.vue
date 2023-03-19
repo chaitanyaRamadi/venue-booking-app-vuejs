@@ -43,6 +43,11 @@ export default {
             dialog:false
         }
     },
+    mounted(){
+        console.log(this.justName);
+        console.log(this.$justHero);
+        console.log(this.getTrack)
+    },
     methods: {
         handleSubmit() {
             if (this.username.trim() ==='' || this.password.trim() ===''){
@@ -57,6 +62,9 @@ export default {
     computed:{
         getLog(){
             return this.$store.getters.getLog
+        },
+        getTrack(){
+            return this.$store.getters.getTrackStatus
         }
     }
 }

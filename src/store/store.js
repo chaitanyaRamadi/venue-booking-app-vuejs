@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
-import data from '@/venues.js'
+import data from '@/venues.js';
+import app from '../main'
 
 export default createStore({
     state(){
@@ -9,7 +10,8 @@ export default createStore({
             selectedCity:'Bangalore',
             isLoggedIn:false,
             user:{},
-            bookedVenueAndUser:{}
+            bookedVenueAndUser:{},
+            isTracking:'no'
         }
     },
     getters:{
@@ -30,6 +32,9 @@ export default createStore({
         },
         getUserAndVenue(state){
             return state.bookedVenueAndUser
+        },
+        getTrackStatus(state){
+            return state.isTracking;
         }
     },
     mutations:{
@@ -53,11 +58,17 @@ export default createStore({
             state.user = {},
             state.bookedVenueAndUser = {}
 
+        },
+        setTracking(state){
+            state.isTracking = 'yes'
         }
     },
     actions:{
         setSelectedCity(context,payload){
             context.commit('setSelectedCity',payload)
+            console.log(app.config.globalProperties.$myGlobalObject.foo);
+            console.log(app.config.globalProperties.$justHero);
+            app.config.globalProperties.$startTracking();
         },
         setLocale(context,payload){
             context.commit('setLocale',payload)

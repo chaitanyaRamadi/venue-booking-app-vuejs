@@ -20,11 +20,13 @@
                 <the-dropdown :locale="true" :list="languages" @dropdown-event="handleLocale"></the-dropdown>
             </div>
             <!-- <v-icon class="btn-earth" icon="mdi-earth"></v-icon> -->
+            <h1>{{ justNum }}</h1>
         </div>
     </nav>
 </template>
 <script>
 import TheDropdown from '@/components/TheDropdown.vue';
+// import app from '../main';
 
 export default {
     components: {
@@ -38,6 +40,10 @@ export default {
                 { key: 'french', abbr: 'fr' },
             ],
         }
+    },
+    mounted() {
+        // console.log(app.config.globalProperties.$justTime);
+        // console.log(this.$justTime);
     },
     computed:{
         getLog(){
