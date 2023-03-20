@@ -1,22 +1,21 @@
 <template>
-  <v-app>
-    <v-main>
-      <TheNavbar/>
-        <router-view v-slot="{ Component }">
-          <keep-alive>
-            <component :is="Component" />
-          </keep-alive>
-        </router-view>
-    </v-main>
-  </v-app>
+    <v-app>
+      <v-main>
+        <TheNavbar/>
+          <router-view v-slot="{ Component }">
+            <keep-alive>
+              <component :is="Component" />
+            </keep-alive>
+          </router-view>
+      </v-main>
+    </v-app>
 </template>
 
-<script>
+<script lang="ts">
 import TheNavbar from './components/TheNavbar.vue'
-
-export default {
+import { defineComponent } from 'vue'
+export default defineComponent({
   name: 'App',
-
   components: {
     TheNavbar,
   },
@@ -24,7 +23,7 @@ export default {
   data: () => ({
     //
   }),
-}
+  });
 </script>
 
 <style>

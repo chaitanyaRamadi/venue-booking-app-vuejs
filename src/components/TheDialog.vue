@@ -11,13 +11,14 @@
         </v-dialog>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+export default/*#__PURE__*/defineComponent({
     props:['dialog1'],
     data(){
         return {
             dialog:false
         }
     }
-}
+})
 </script>

@@ -1,12 +1,12 @@
-import store from '../store/store.js'
-import { ref } from 'vue';
+import store from '../store'
+import { ref,App } from 'vue';
 import TheHeading from '../components/TheHeading.vue'
 
 export default {
-    install:function(app,{ time }){
+    install:function(app:App,{ time }:{time:number}){
 
-        let randomText = ref();
-        let startTracking = function(){
+        const randomText = ref<string>();
+        const startTracking = function(){
             console.log(store.getters.getTrackStatus);
             store.commit('setTracking');
             console.log(store.getters.getTrackStatus);
@@ -17,7 +17,7 @@ export default {
         app.component('the-heading',TheHeading);
         app.config.globalProperties.$justHero = 'hanuman';
         app.config.globalProperties.$startTracking = startTracking;
-        let stopTracking = function(){
+        const stopTracking = function(){
             console.log(randomText.value+' -- from stop tracking');
         }
         app.config.globalProperties.$stopTracking = stopTracking;

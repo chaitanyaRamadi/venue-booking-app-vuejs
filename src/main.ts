@@ -1,18 +1,19 @@
-import { createApp} from 'vue'
+import { createApp } from 'vue'
 import i18n  from './i18n/index'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import { loadFonts } from './plugins/webfontloader'
-import router from './router.js'
-import store from './store/store.js'
+import router from './router'
+import store from './store'
 import idleTracker from './plugins/idleTracker'
 
 import TheDialog from './components/TheDialog.vue'
+import { App as VueApp } from '@vue/runtime-core'
 
 loadFonts()
 
-let app;
-function mountApp(){
+let app:VueApp|any;
+function mountApp():void{
   app = createApp(App)
   app.use(idleTracker,{time:1000})
   app.component('the-dialog',TheDialog)

@@ -33,8 +33,9 @@
     </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+export default /*#__PURE__*/defineComponent({
     name: 'TheLogin',
     data(){
         return {
@@ -42,11 +43,6 @@ export default {
             password:'',
             dialog:false
         }
-    },
-    mounted(){
-        console.log(this.justName);
-        console.log(this.$justHero);
-        console.log(this.getTrack)
     },
     methods: {
         handleSubmit() {
@@ -67,7 +63,7 @@ export default {
             return this.$store.getters.getTrackStatus
         }
     }
-}
+})
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

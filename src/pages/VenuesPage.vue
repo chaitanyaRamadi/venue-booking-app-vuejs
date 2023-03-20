@@ -7,7 +7,7 @@
     <the-dropdown :locale="false" :list="states" @dropdown-event="handleStatesChange"></the-dropdown>
     <!-- <the-dropdown :list="languages" @dropdown-event="handleLocale"></the-dropdown> -->
 <div class="items">
-    <div  v-for="venue in city" :key="venue.name">
+    <div  v-for="venue in cities" :key="venue.name">
             <v-card   class="mx-auto" max-width="400" width="500">
                 <v-img :src=venue.image height="230px" cover></v-img>
                 
@@ -36,17 +36,18 @@
 
 </template>
 
-<script>
+<script lang="ts">
+import { venue } from '@/types/venueData'
 import TheDropdown from '@/components/TheDropdown.vue'
+import { defineComponent } from 'vue'
 
-
-export default {
+export default/*#__PURE__*/defineComponent({
     components:{
         TheDropdown
     },
     data(){
         return {
-            city: [],
+            cities: [] as Array<venue>,
             states: [
                 { key: 'Bangalore', abbr: 'BG' },
                 { key: 'Delhi', abbr: 'DE' },
@@ -62,26 +63,26 @@ export default {
         }
     },
     computed: {
-        selectedCity() {
+        selectedCity():String {
             return this.$store.getters.getSelectedCity
         },
-        venuesData(){
+        venuesData():Array<venue>{
             return this.$store.getters.getVenues
         }   
     },
     methods:{
-        handleLocale(event){
-            this.$i18n.locale = event.target.value.slice(0,2);
-            this.$store.dispatch('setLocale', event.target.value)
+        handleLocale(event:Event){
+            this.$i18n.locale = (event.target as HTMLInputElement).value.slice(0,2);
+            this.$store.dispatch('setLocale', (event.target as HTMLInputElement).value)
         },
-        handleStatesChange(event){
-            this.$store.dispatch('setSelectedCity', event.target.value)
+        handleStatesChange(event:Event):void{
+            this.$store.dispatch('setSelectedCity', (event.target as HTMLInputElement).value)
         },
-        bookNow(venueId){
+        bookNow(venueId:number):void{
             this.$router.push('/venues/'+venueId)
         },
-        filterVenuesByCity(){
-            this.city = this.venuesData.filter((item) => item.city == this.selectedCity)
+        filterVenuesByCity():void{
+            this.cities = this.venuesData.filter((item) => item.city == this.selectedCity)
         }
     },
     watch:{
@@ -96,7 +97,7 @@ export default {
     mounted(){
         console.log(this.$i18n.locale);
     }
-}
+})
 </script>
 
 <style>

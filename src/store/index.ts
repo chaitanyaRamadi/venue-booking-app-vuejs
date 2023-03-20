@@ -1,8 +1,9 @@
 import { createStore } from "vuex";
-import data from '@/venues.js';
+import data from '../venues';
 import app from '../main'
+import { RootState } from "@/types/vuex";
 
-export default createStore({
+export default createStore<RootState>({
     state(){
         return {
             venues:data,
@@ -15,76 +16,76 @@ export default createStore({
         }
     },
     getters:{
-        getVenues(state){
+        getVenues(state:RootState){
             return state.venues
         },
-        getLog(state){
+        getLog(state:RootState){
             return state.isLoggedIn
         },
-        getSelectedCity(state){
+        getSelectedCity(state:RootState){
             return state.selectedCity
         },
-        getLocale(state){
+        getLocale(state:RootState){
             return state.locale
         },
-        getUsers(state){
+        getUsers(state:RootState){
             return state.user
         },
-        getUserAndVenue(state){
+        getUserAndVenue(state:RootState){
             return state.bookedVenueAndUser
         },
-        getTrackStatus(state){
+        getTrackStatus(state:RootState){
             return state.isTracking;
         }
     },
     mutations:{
-        setSelectedCity(state,payload){
+        setSelectedCity(state:RootState,payload){
             state.selectedCity = payload
         },
-        setLocale(state,payload){
+        setLocale(state:RootState,payload){
             state.locale = payload
         },
-        setLog(state,payload){
+        setLog(state:RootState,payload){
             state.isLoggedIn = payload
         },
-        addUser(state,payload){
+        addUser(state:RootState,payload){
             state.user = payload
         },
-        setVenue(state,payload){
+        setVenue(state:RootState,payload){
             state.bookedVenueAndUser = payload
         },
-        resetState(state){
+        resetState(state:RootState){
             state.isLoggedIn = false,
             state.user = {},
             state.bookedVenueAndUser = {}
 
         },
-        setTracking(state){
+        setTracking(state:RootState){
             state.isTracking = 'yes'
         }
     },
     actions:{
-        setSelectedCity(context,payload){
-            context.commit('setSelectedCity',payload)
+        setSelectedCity({ commit },payload){
+            commit('setSelectedCity',payload)
             console.log(app.config.globalProperties.$myGlobalObject.foo);
             console.log(app.config.globalProperties.$justHero);
             app.config.globalProperties.$startTracking();
         },
-        setLocale(context,payload){
-            context.commit('setLocale',payload)
+        setLocale({ commit },payload){
+            commit('setLocale',payload)
         },
-        setLog(context,payload){
-            context.commit('setLog',payload)
+        setLog({ commit },payload){
+            commit('setLog',payload)
         },
-        addUser(context,payload){
-            context.commit('addUser',payload)
+        addUser({ commit },payload){
+            commit('addUser',payload)
         },
-        setVenue(context,payload){
+        setVenue({ commit },payload){
             console.log(payload,' from actions');
-            context.commit('setVenue',payload)
+            commit('setVenue',payload)
         },
-        resetState(context){
-            context.commit('resetState')
+        resetState({ commit }){
+            commit('resetState')
         }
     }
 })

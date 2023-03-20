@@ -7,8 +7,9 @@
     
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+export default/*#__PURE__*/defineComponent({
     props:['list','locale'],
     emits:['dropdown-event'],
     data(){
@@ -16,7 +17,7 @@ export default {
             items: this.list,
          } 
     }
-}
+})
 </script>
 
 <style scoped>

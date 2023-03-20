@@ -6,7 +6,7 @@ import TheHome from '@/pages/TheHome.vue'
 import VenuesPage from './pages/VenuesPage.vue'
 import TheBooking from './pages/TheBooking.vue'
 import BookingDone from './pages/BookingDone.vue'
-import ErrorPage from './pages/ErrorPage'
+import ErrorPage from './pages/ErrorPage.vue'
 
 
 const router =  createRouter({

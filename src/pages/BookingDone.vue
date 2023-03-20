@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <section class="head">
-            <v-btn @click="this.$router.push('/venues')">{{ $t('bookingSuccessPage.back') }}</v-btn>
+            <v-btn @click="GoToVenues">{{ $t('bookingSuccessPage.back') }}</v-btn>
             <h2>{{ $t('bookingSuccessPage.congrats') }} <span class="user-name">{{ bookingDetails.userDetails.name }}</span>! {{ $t('bookingSuccessPage.continuedMsg') }} <span class="venue-name">{{ bookingDetails.venueDetails.name }}</span>.</h2>
         </section>
         <div class="xcard">
@@ -30,15 +30,21 @@
     </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue';
+export default/*#__PURE__*/defineComponent({
     computed:{
         bookingDetails(){
             console.log(this.$store.getters.getUserAndVenue.userDetails.name+' name');
             return this.$store.getters.getUserAndVenue
         }
+    },
+    methods:{
+        GoToVenues(){
+            this.$router.push('/venues')
+        }
     }
-}
+})
 
 </script>
 

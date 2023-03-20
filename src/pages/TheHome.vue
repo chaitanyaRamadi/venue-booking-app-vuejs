@@ -2,7 +2,7 @@
         <div class="hero">
             <div class="quote">
                 <h1>{{ $t('homePage.caption') }}</h1>
-                <v-btn class="btn" @click="this.$router.push('/login')" color="black">{{ $t('venuesPage.bookNow') }}</v-btn>
+                <v-btn class="btn" @click="$router.push('/login')" color="black">{{ $t('venuesPage.bookNow') }}</v-btn>
             </div>
             <div class="picture">
                 <div class="pic1 pic">

@@ -55,14 +55,15 @@
         </v-dialog>
 </template>
 
-<script>
+<script lang="ts">
 import { useVuelidate } from '@vuelidate/core'
 import { required,minValue,minLength } from '@vuelidate/validators'
-import { isValidDate,isValidStartTime,isValidEndTime } from '../validators.js'
+import { isValidDate,isValidStartTime,isValidEndTime } from '../validators'
+import { defineComponent } from 'vue'
+import { venue } from '@/types/venueData'
 
 
-
-export default {
+export default defineComponent({
     setup() { return { v$: useVuelidate() } },
     data(){
         return {
@@ -72,7 +73,7 @@ export default {
             endTime: null,
             memberCount: null,
             dialog:false,
-            currentVenue:{},
+            currentVenue:{} as venue|any,
             msg:''
         }
     },
@@ -101,18 +102,18 @@ export default {
         }
     },
     computed:{
-        venueData(){
+        venueData():Array<venue>{
             return this.$store.getters.getVenues
         }
     },
     created(){
-        this.currentVenue = this.venueData.find((item) => item.id == this.$route.params.id)
+        this.currentVenue = this.venueData.find((item:venue) => item.id.toString() == this.$route.params.id)
     },
     methods:{
-        cancelAndBack(){
+        cancelAndBack():void{
             this.$router.push('/venues')
         },
-        async confirmDetails(){
+        async confirmDetails(): Promise<void>{
             const isFormCorrect = await this.v$.$validate()
             if (isFormCorrect){
                 let bookingDetails = {}
@@ -120,7 +121,7 @@ export default {
                     name: this.name,
                     date:this.date,
                     startTime: this.startTime,
-                    endTime: this.endDate,
+                    endTime: this.endTime,
                     memberCount: this.memberCount
                 }
                 this.$store.dispatch('setVenue',{
@@ -136,7 +137,7 @@ export default {
             }
         }
     
-}
+})
 </script>
 
 <style scoped>

@@ -20,15 +20,14 @@
                 <the-dropdown :locale="true" :list="languages" @dropdown-event="handleLocale"></the-dropdown>
             </div>
             <!-- <v-icon class="btn-earth" icon="mdi-earth"></v-icon> -->
-            <h1>{{ justNum }}</h1>
         </div>
     </nav>
 </template>
-<script>
+<script lang="ts">
 import TheDropdown from '@/components/TheDropdown.vue';
+import   { defineComponent } from 'vue'
 // import app from '../main';
-
-export default {
+export default/*#__PURE__*/defineComponent({
     components: {
         TheDropdown
     },
@@ -46,21 +45,21 @@ export default {
         // console.log(this.$justTime);
     },
     computed:{
-        getLog(){
+        getLog():boolean{
             return this.$store.getters.getLog
         }
     },
     methods:{
-        handleLocale(event) {
-            this.$i18n.locale = event.target.value.slice(0, 2);
-            this.$store.dispatch('setLocale', event.target.value)
+        handleLocale(event:Event) {
+            this.$i18n.locale = (event.target as HTMLInputElement).value.slice(0, 2);
+            this.$store.dispatch('setLocale', (event.target as HTMLInputElement).value)
         },
         logout(){
             this.$store.dispatch('setLog',false)
             this.$router.replace('/')
         }
     }
-}
+})
 </script>
 
 <style scoped>
