@@ -1,4 +1,5 @@
-import { createRouter,createWebHistory } from "vue-router";
+import { createRouter,createWebHistory, RouteLocationNormalized } from "vue-router";
+import store from "./store";
 
 
 import TheLogin from '@/pages/TheLogin.vue'
@@ -8,6 +9,21 @@ import TheBooking from './pages/TheBooking.vue'
 import BookingDone from './pages/BookingDone.vue'
 import ErrorPage from './pages/ErrorPage.vue'
 
+const redirectIfLoggedIn = (to: any,from: any, next: any) => {
+    if(store.getters.getLog){
+        next({name:'venues-page'})
+    }
+    else
+        next();
+}
+
+const isLoggedIn = (to: any,from: any, next: any) => {
+    if(!store.getters.getLog){
+        next({name:'login-page'})
+    }
+    else
+        next();
+}
 
 const router =  createRouter({
    history:createWebHistory(),
@@ -20,22 +36,26 @@ const router =  createRouter({
     {
         name:'login-page',
         path:'/login',
-        component:TheLogin
+        component: TheLogin,
+        beforeEnter: redirectIfLoggedIn
     },
     {
         name:'venues-page',
         path:'/venues',
-        component:VenuesPage
+        component:VenuesPage,
+        beforeEnter: isLoggedIn
     },
     {
         name:'booking-page',
         path:'/venues/:id',
-        component:TheBooking
+        component:TheBooking,
+        beforeEnter: isLoggedIn
     },
     {
         name:'success-page',
         path:'/booking-success',
-        component:BookingDone
+        component:BookingDone,
+        beforeEnter: isLoggedIn
     },
     {
         name:'error-page',

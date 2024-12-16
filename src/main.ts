@@ -26,7 +26,7 @@ function mountApp():void{
 
 mountApp();
 
-app.config.globalProperties.justName = 'Rama';
+// app.config.globalProperties.justName = 'Rama';
 app.config.globalProperties.$myGlobalObject = {
   // your global object properties and methods go here
   foo: 'bar',

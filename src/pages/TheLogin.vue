@@ -50,6 +50,8 @@ export default /*#__PURE__*/defineComponent({
                 this.dialog = true
             }
             else{
+                this.username = '';
+                this.password = '';
                 this.$store.dispatch('setLog',true)
                 this.$router.push('/venues')
             }
